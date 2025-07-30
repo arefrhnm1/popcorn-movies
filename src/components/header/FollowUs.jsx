@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FollowUs() {
     return (
-        <div className="container gap-4 items-center mx-auto flex justify-end text-blue-950 opacity-70 mt-10">
+        <div className="gap-4 items-center flex justify-end text-blue-950 opacity-70 mt-10">
             <span>Follow Us :</span>
             <ul className="flex gap-3">
                 <li>

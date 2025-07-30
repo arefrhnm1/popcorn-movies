@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Navigation() {
     return (
-        <nav className="text-blue-900 mt-10 items-baseline container mx-auto flex justify-between">
+        <nav className="text-blue-900 mt-10 items-baseline flex justify-between">
             <div className="flex gap-10 items-baseline">
                 <h1 className="text-2xl"><a href="#">Popcorn movies</a></h1>
                 <ul className="flex gap-3">

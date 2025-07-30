@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchBox() {
     return (
-        <section className="container mt-12 mx-auto relative">
+        <section className="mt-12 relative">
             <input
                 type="text"
                 className="w-full text-xl text-blue-900 placeholder:text-sm placeholder:text-blue-900 placeholder:opacity-70 bg-blue-200 px-4 py-2 outline-none rounded-md"
