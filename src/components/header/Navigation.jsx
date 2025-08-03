@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Navigation() {
     return (
-        <nav className="text-blue-900 mt-10 items-baseline flex justify-between">
+        <nav className="text-white items-baseline flex justify-between">
             <div className="flex gap-10 items-baseline">
-                <h1 className="text-2xl"><a href="#">Popcorn movies</a></h1>
+                <h1 className="text-2xl"><a href="#"><span className="text-3xl text-yellow-600 font-bold">Popcorn</span> movies</a></h1>
                 <ul className="flex gap-3">
                     <li>
                         <a href="#">Movies</a>
@@ -26,7 +26,7 @@ export default function Navigation() {
                         <a href="#">Login</a>
                     </li>
                     <li>
-                        <a href="#" className="bg-blue-200 px-4 py-2 rounded-xl">
+                        <a href="#" className="bg-yellow-900 px-4 py-2 rounded-xl">
                             Sign up
                         </a>
                     </li>

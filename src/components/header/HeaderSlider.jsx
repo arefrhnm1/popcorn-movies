@@ -13,19 +13,23 @@ export default function HeaderSlider() {
             className="mt-8"
         >
             <SwiperSlide>
-                <img className="w-full" src="/sliderImage.jpg" alt="" />
+                <img
+                    className="w-full rounded"
+                    src="/sliderImage.jpg"
+                    alt=""
+                />
             </SwiperSlide>
             <SwiperSlide>
-                <img className="w-full" src="/sliderImage.jpg" alt="" />
+                <img className="w-full rounded" src="/sliderImage.jpg" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-                <img className="w-full" src="/sliderImage.jpg" alt="" />
+                <img className="w-full rounded" src="/sliderImage.jpg" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-                <img  className="w-full" src="/sliderImage.jpg" alt="" />
+                <img className="w-full rounded" src="/sliderImage.jpg" alt="" />
             </SwiperSlide>
             <SwiperSlide>
-                <img className="w-full" src="/sliderImage.jpg" alt="" />
+                <img className="w-full rounded" src="/sliderImage.jpg" alt="" />
             </SwiperSlide>
         </Swiper>
     );

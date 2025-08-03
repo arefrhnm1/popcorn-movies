@@ -1,18 +1,26 @@
-import React from 'react'
-import Navigation from './Navigation'
-import SearchBox from './SearchBox'
-import FollowUs from './FollowUs'
-import HeaderSlider from './HeaderSlider'
+import React, { useState } from "react";
+import Navigation from "./Navigation";
+import SearchBox from "./SearchBox";
+import FollowUs from "./FollowUs";
+import HeaderSlider from "./HeaderSlider";
 
 export default function Header() {
-  return (
-    <header>
-      <div className='container mx-auto'>
-        <Navigation/>
-        <SearchBox/>
-        <FollowUs/>
-        <HeaderSlider/>
-      </div>
-    </header>
-  )
+
+    return (
+        <header
+            className="py-12"
+            style={{
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 80%),rgb(0 0 0 / 0)), url("/backgroundImage.jpg")`,
+            }}
+        >
+            <div className="container mx-auto">
+                <Navigation />
+                <SearchBox />
+                <FollowUs />
+                <HeaderSlider />
+            </div>
+        </header>
+    );
 }

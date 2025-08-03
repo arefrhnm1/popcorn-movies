@@ -5,14 +5,14 @@ export default function SearchBox() {
         <section className="mt-12 relative">
             <input
                 type="text"
-                className="w-full text-xl text-blue-900 placeholder:text-sm placeholder:text-blue-900 placeholder:opacity-70 bg-blue-200 px-4 py-2 outline-none rounded-md"
+                className="w-full text-xl text-white placeholder:text-sm placeholder:text-white placeholder:opacity-70 bg-yellow-700 opacity-80 px-4 py-2 outline-none rounded-md"
                 placeholder="Search for movie ..."
             />
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-6 absolute text-blue-900 right-3 top-1/2 -translate-y-1/2"
+                className="size-6 absolute text-white right-3 top-1/2 -translate-y-1/2"
             >
                 <path
                     fillRule="evenodd"
