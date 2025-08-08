@@ -8,7 +8,7 @@ export default function Header() {
 
     return (
         <header
-            className="py-12"
+            className="py-6 md:py-12 px-8"
             style={{
                 backgroundPosition: "center",
                 backgroundSize: "cover",
