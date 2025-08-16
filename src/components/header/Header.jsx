@@ -4,7 +4,7 @@ import SearchBox from "./SearchBox";
 import FollowUs from "./FollowUs";
 import HeaderSlider from "./HeaderSlider";
 
-export default function Header() {
+export default function Header({movies}) {
 
     return (
         <header
@@ -19,7 +19,7 @@ export default function Header() {
                 <Navigation />
                 <SearchBox />
                 <FollowUs />
-                <HeaderSlider />
+                <HeaderSlider movies={movies}/>
             </div>
         </header>
     );
