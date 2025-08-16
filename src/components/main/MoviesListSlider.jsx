@@ -31,7 +31,7 @@ export default function MoviesListSlider({movies}) {
     >
       {movies.map((img) => (
         <SwiperSlide>
-          <MovieCard img={img}/>
+          <MovieCard rd img={img}/>
         </SwiperSlide>
       ))}
     </Swiper>

@@ -3,7 +3,7 @@ import MoviesListSlider from "./MoviesListSlider";
 
 export default function MoviesList({movies}) {
 	return (
-		<div className="container mx-auto pt-8">
+		<div className="container mx-auto">
 			<div className="md:flex items-baseline gap-8">
 				<h2 className="text-yellow-300 text-3xl">What's Popular</h2>
                 <ul className="my-6 flex flex-col gap-2 text-yellow-100 md:flex-row md:gap-4">
