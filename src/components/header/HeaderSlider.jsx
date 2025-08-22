@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import MovieCard from "../movies/MovieCard";
+import axios from "axios";
 
-export default function HeaderSlider({movies}) {
+export default function HeaderSlider() {
+	const [movies, setMovies] = useState([]);
+
+	async function loadMovies() {
+		const { data } = await axios.get(
+			"https://api.themoviedb.org/3/movie/popular?api_key=23815a8126ebea2361be84d5f37a213d"
+		);
+		setMovies(data.results);
+	}
+
+	useEffect(() => {
+		loadMovies();
+	}, []);
+	console.log(movies);
+
 	return (
 		<Swiper
 			modules={[Autoplay]}
@@ -30,9 +45,15 @@ export default function HeaderSlider({movies}) {
 				},
 			}}
 		>
-			{movies.map((img) => (
+			{movies.map((movie) => (
 				<SwiperSlide>
-					<MovieCard img={img}/>
+					<div>
+						<MovieCard
+							img={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
+							title={movie.title}
+							rate={movie.vote_average}
+						/>
+					</div>
 				</SwiperSlide>
 			))}
 		</Swiper>
