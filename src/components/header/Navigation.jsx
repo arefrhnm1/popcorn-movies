@@ -1,8 +1,32 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+const menuItems = [
+	{
+		path: "movies",
+		text: "Movies",
+	},
+	{
+		path: "/tv",
+		text: "TV Shows",
+	},
+	{
+		path: "/people",
+		text: "People",
+	},
+	{
+		path: "/more",
+		text: "More",
+	},
+];
+
 export default function Navigation() {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+	function activeClass({isActive}) {
+		return isActive ? 'bg-yellow-900/30 rounded text-yellow-400 py-1 px-2' : 'py-1 px-2'
+	}
+
 	return (
 		<>
 			<nav className="text-white items-baseline flex justify-between">
@@ -16,18 +40,11 @@ export default function Navigation() {
 						</h1>
 					</Link>
 					<ul className="gap-3 hidden md:flex">
-						<li>
-							<NavLink to="/movies">Movies</NavLink>
-						</li>
-						<li>
-							<NavLink to="tv">TV shows</NavLink>
-						</li>
-						<li>
-							<NavLink to="people">People</NavLink>
-						</li>
-						<li>
-							<NavLink to="#">More</NavLink>
-						</li>
+						{menuItems.map((i) => (
+							<li key={i.path}>
+								<NavLink className={activeClass} to={i.path}>{i.text}</NavLink>
+							</li>
+						))}
 					</ul>
 				</div>
 				<div>
@@ -71,18 +88,11 @@ export default function Navigation() {
 				style={{ height: isOpenMenu ? 270 : 0 }}
 			>
 				<ul className="flex flex-col gap-4">
-					<li>
-						<NavLink to="/movies">Movies</NavLink>
-					</li>
-					<li>
-						<NavLink to="/tv">TV shows</NavLink>
-					</li>
-					<li>
-						<NavLink to="/people">People</NavLink>
-					</li>
-					<li>
-						<NavLink to="#">More</NavLink>
-					</li>
+					{menuItems.map((i) => (
+						<li key={i.path}>
+							<NavLink onClick={() => setIsOpenMenu(false)} className={activeClass} to={i.path}>{i.text}</NavLink>
+						</li>
+					))}
 				</ul>
 				<div className="mt-8 flex gap-4 justify-center items-center border-t-2 pt-4 border-yellow-600">
 					<NavLink to="/login" className="text-xl">

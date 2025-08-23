@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
 				path: "/people",
 				element: <h1>this is person page!</h1>,
 			},
+			{
+				path: "/more",
+				element: <h1>this is more page!</h1>,
+			},
 		],
 	},
 ]);
