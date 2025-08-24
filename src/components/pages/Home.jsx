@@ -22,7 +22,7 @@ export default function Home() {
 					<li>In Theaters</li>
 				</ul>
 			</div>
-			<MoviesListSlider movies={movies} />
+			{/* <MoviesListSlider movies={movies} /> */}
 			<div className="md:flex items-baseline gap-8 pt-8">
 				<h2 className="text-yellow-300 text-3xl">Free to Watch</h2>
 				<ul className="my-6 flex flex-col gap-2 text-yellow-100 md:flex-row md:gap-4">
@@ -30,7 +30,7 @@ export default function Home() {
 					<li>Tv</li>
 				</ul>
 			</div>
-			<MoviesListSlider movies={movies} />
+			{/* <MoviesListSlider movies={movies} /> */}
 		</div>
 	);
 }

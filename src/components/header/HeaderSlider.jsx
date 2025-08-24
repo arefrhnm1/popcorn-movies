@@ -63,9 +63,9 @@ export default function HeaderSlider({ setBg, resetBg }) {
 							onMouseLeave={resetBg}
 						>
 							<MovieCard
-								img={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
-								title={movie.title}
-								rate={movie.vote_average}
+								// title={movie.title}
+								// rate={movie.vote_average}
+								movie={movie}
 							/>
 						</div>
 					</SwiperSlide>
