@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const menuItems = [
 	{
@@ -23,8 +24,13 @@ const menuItems = [
 export default function Navigation() {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-	function activeClass({isActive}) {
-		return isActive ? 'bg-yellow-900/30 rounded text-yellow-400 py-1 px-2' : 'py-1 px-2'
+	const {user} = useContext(UserContext);
+	
+
+	function activeClass({ isActive }) {
+		return isActive
+			? "bg-yellow-900/30 rounded text-yellow-400 py-1 px-2"
+			: "py-1 px-2";
 	}
 
 	return (
@@ -42,25 +48,31 @@ export default function Navigation() {
 					<ul className="gap-3 hidden md:flex">
 						{menuItems.map((i) => (
 							<li key={i.path}>
-								<NavLink className={activeClass} to={i.path}>{i.text}</NavLink>
+								<NavLink className={activeClass} to={i.path}>
+									{i.text}
+								</NavLink>
 							</li>
 						))}
 					</ul>
 				</div>
 				<div>
-					<ul className="gap-3 hidden md:flex">
-						<li>
-							<NavLink to="/login">Login</NavLink>
-						</li>
-						<li>
-							<NavLink
-								to="signup"
-								className="bg-yellow-900 px-4 py-2 rounded-xl"
-							>
-								Sign up
-							</NavLink>
-						</li>
-					</ul>
+					{Object.keys(user).length ? (
+						<div>{user.name}</div>
+					) : (
+						<ul className="gap-3 hidden md:flex">
+							<li>
+								<NavLink to="/login">Login</NavLink>
+							</li>
+							<li>
+								<NavLink
+									to="signup"
+									className="bg-yellow-900 px-4 py-2 rounded-xl"
+								>
+									Sign up
+								</NavLink>
+							</li>
+						</ul>
+					)}
 				</div>
 				<div className="md:hidden ">
 					<button onClick={() => setIsOpenMenu(!isOpenMenu)}>
@@ -90,7 +102,13 @@ export default function Navigation() {
 				<ul className="flex flex-col gap-4">
 					{menuItems.map((i) => (
 						<li key={i.path}>
-							<NavLink onClick={() => setIsOpenMenu(false)} className={activeClass} to={i.path}>{i.text}</NavLink>
+							<NavLink
+								onClick={() => setIsOpenMenu(false)}
+								className={activeClass}
+								to={i.path}
+							>
+								{i.text}
+							</NavLink>
 						</li>
 					))}
 				</ul>

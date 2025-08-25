@@ -3,6 +3,7 @@ import App from "./App";
 import Home from "./components/pages/Home";
 import Movies from "./components/pages/Movies";
 import Movie from "./components/pages/Movie";
+import Login from "./components/pages/Login";
 
 export const router = createBrowserRouter([
 	{
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/movies/:id",
-				element: <Movie/>,
+				element: <Movie />,
 			},
 			{
 				path: "/tv",
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/more",
 				element: <h1>this is more page!</h1>,
+			},
+			{
+				path: "/login",
+				element: <Login/>,
 			},
 		],
 	},

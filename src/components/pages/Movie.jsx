@@ -1,10 +1,28 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import toast from "react-hot-toast";
+
+const api_key = "23815a8126ebea2361be84d5f37a213d";
+const baseUrl = "https://api.themoviedb.org/3";
 
 export default function Movie() {
 	const { id } = useParams();
 	const [movie, setMovie] = useState(null);
+	const { user, session } = useContext(UserContext);
+
+	async function handleAddToWatchList() {
+		const result = await axios.post(
+			`${baseUrl}/account/${user.id}/favorite?api_key=${api_key}&session_id=${session}`,
+			{
+				media_type: "movie",
+				media_id: movie.id,
+				favorite: true,
+			}
+		);
+		toast.success(`${movie.title} has been added to your favorites.`)
+	}
 
 	async function loadMovie() {
 		const { data } = await axios.get(
@@ -26,6 +44,12 @@ export default function Movie() {
 						src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
 						alt={movie.title}
 					/>
+					<button
+						className="p-4 bg-white rounded "
+						onClick={handleAddToWatchList}
+					>
+						Add to watch List!
+					</button>
 				</div>
 			) : (
 				<h1>loading...</h1>
