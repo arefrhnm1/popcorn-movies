@@ -7,7 +7,5 @@ import { router } from "./router.jsx";
 import UserProvider, { UserContext } from "./context/UserContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-	<UserProvider>
-		<RouterProvider router={router} />
-	</UserProvider>
+	<RouterProvider router={router} />
 );

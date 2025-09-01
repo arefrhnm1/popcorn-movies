@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -8,16 +9,17 @@ const api_key = "23815a8126ebea2361be84d5f37a213d";
 const baseUrl = "https://api.themoviedb.org/3";
 
 export default function UserProvider({ children }) {
+	const navigate = useNavigate();
 	const [user, setUser] = useState({});
 	const [session, setSession] = useState(() =>
 		localStorage.getItem("session")
 	);
 
 	async function getUserData() {
-		const {data} = await axios.get(
+		const { data } = await axios.get(
 			`${baseUrl}/account?api_key=${api_key}&session_id=${session}`
 		);
-		setUser(data)
+		setUser(data);
 	}
 
 	useEffect(() => {
@@ -25,6 +27,12 @@ export default function UserProvider({ children }) {
 			getUserData();
 		}
 	}, [session]);
+
+	function logout() {
+		setUser({});
+		setSession(null);
+		localStorage.clear();
+	}
 
 	async function login(username, password) {
 		try {
@@ -49,13 +57,14 @@ export default function UserProvider({ children }) {
 			);
 			setSession(session.data.session_id);
 			localStorage.setItem("session", session.data.session_id);
+			navigate("/", { replace: true });
 		} catch {
 			toast.error("Invalid username and password!");
 		}
 	}
 
 	return (
-		<UserContext.Provider value={{ user, login, session }}>
+		<UserContext.Provider value={{ user, login, session, logout }}>
 			{children}
 		</UserContext.Provider>
 	);

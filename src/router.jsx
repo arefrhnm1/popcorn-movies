@@ -4,10 +4,15 @@ import Home from "./components/pages/Home";
 import Movies from "./components/pages/Movies";
 import Movie from "./components/pages/Movie";
 import Login from "./components/pages/Login";
+import UserProvider from "./context/UserContext";
 
 export const router = createBrowserRouter([
 	{
-		element: <App />,
+		element: (
+			<UserProvider>
+				<App />
+			</UserProvider>
+		),
 		children: [
 			{
 				path: "/",
@@ -35,7 +40,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/login",
-				element: <Login/>,
+				element: <Login />,
 			},
 		],
 	},

@@ -24,8 +24,7 @@ const menuItems = [
 export default function Navigation() {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-	const {user} = useContext(UserContext);
-	
+	const { user, logout } = useContext(UserContext);
 
 	function activeClass({ isActive }) {
 		return isActive
@@ -57,7 +56,10 @@ export default function Navigation() {
 				</div>
 				<div>
 					{Object.keys(user).length ? (
-						<div>{user.name}</div>
+						<div className="flex gap-5 items-baseline">
+							<div>{user.name}</div>
+							<button onClick={logout} className="bg-yellow-900 px-4 py-2 rounded-xl">Logout</button>
+						</div>
 					) : (
 						<ul className="gap-3 hidden md:flex">
 							<li>
