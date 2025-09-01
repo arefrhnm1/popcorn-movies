@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import MovieCard from "../movies/MovieCard";
-import axios from "axios";
+import { fench } from "../../services/fench";
 
 export default function HeaderSlider({ setBg, resetBg }) {
 	const [movies, setMovies] = useState([]);
 	const swiperRef = useRef(null);
 
 	async function loadMovies() {
-		const { data } = await axios.get(
-			"https://api.themoviedb.org/3/movie/popular?api_key=23815a8126ebea2361be84d5f37a213d"
+		const { data } = await fench.get(
+			"movie/popular"
 		);
 		setMovies(data.results);
 	}

@@ -1,12 +1,8 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import toast from "react-hot-toast";
 import { fench } from "../../services/fench";
-
-const api_key = "23815a8126ebea2361be84d5f37a213d";
-const baseUrl = "https://api.themoviedb.org/3";
 
 export default function Movie() {
 	const { id } = useParams();
