@@ -32,6 +32,7 @@ export default function UserProvider({ children }) {
 		setUser({});
 		setSession(null);
 		localStorage.clear();
+		delete window.fench.defaults.params.session_id;
 	}
 
 	async function login(username, password) {
@@ -57,6 +58,7 @@ export default function UserProvider({ children }) {
 			);
 			setSession(session.data.session_id);
 			localStorage.setItem("session", session.data.session_id);
+			window.fench.defaults.params.session_id = session.data.session_id;
 			navigate("/", { replace: true });
 		} catch {
 			toast.error("Invalid username and password!");
