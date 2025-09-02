@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navigation from "./Navigation";
-import SearchBox from "./SearchBox";
+import SearchBox from "./searchbox/SearchBox";
 import FollowUs from "./FollowUs";
 import HeaderSlider from "./HeaderSlider";
 import { useLocation } from "react-router-dom";
