@@ -34,7 +34,7 @@ export default function UserProvider({ children }) {
 		try {
 			console.log(username);
 			const tokenResult = await fench.get(
-				`$authentication/token/new`
+				`authentication/token/new`
 			);
 
 			const authorize = await fench.post(
@@ -54,7 +54,7 @@ export default function UserProvider({ children }) {
 			setSession(session.data.session_id);
 			localStorage.setItem("session", session.data.session_id);
 			window.fench.defaults.params.session_id = session.data.session_id;
-			navigate("/", { replace: true });
+			navigate("/profile", { replace: true });
 		} catch {
 			toast.error("Invalid username and password!");
 		}
