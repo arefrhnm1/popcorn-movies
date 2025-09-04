@@ -1,14 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import toast from "react-hot-toast";
 import { fench } from "../../services/fench";
 import ReactStars from "react-rating-stars-component";
+import { useMovieDB } from "../../hooks/useMovieDB";
 
 export default function Movie() {
-	const [movie, setMovie] = useState(null);
-	const [isFavorite, setIsFavorite] = useState(false);
 	const { id } = useParams();
+	const [movie, loading] = useMovieDB(`movie/${id}`);
+
+	
+	const [isFavorite, setIsFavorite] = useState(false);
 	const { user, session, favoriteMovies, fetchFavoriteMovies } =
 		useContext(UserContext);
 
@@ -36,20 +39,11 @@ export default function Movie() {
 		}
 	}
 
-	async function loadMovie() {
-		const { data } = await fench.get(`movie/${id}`);
-		setMovie(data);
-	}
-
-	useEffect(() => {
-		loadMovie();
-	}, [id]);
-
 	async function ratingChanged(rate) {
-		await fench.post(`movie/${movie.id}/rating`,{
-			value: rate * 2
-		})
-		toast.success(`Your vote is submitted.`)
+		await fench.post(`movie/${movie.id}/rating`, {
+			value: rate * 2,
+		});
+		toast.success(`Your vote is submitted.`);
 	}
 
 	return (

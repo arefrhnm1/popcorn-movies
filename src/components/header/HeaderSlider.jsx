@@ -1,23 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import MovieCard from "../movies/MovieCard";
-import { fench } from "../../services/fench";
+import { useMovieDB } from "../../hooks/useMovieDB";
 
 export default function HeaderSlider({ setBg, resetBg }) {
-	const [movies, setMovies] = useState([]);
+	const [data] = useMovieDB(`movie/popular`);
 	const swiperRef = useRef(null);
-
-	async function loadMovies() {
-		const { data } = await fench.get(
-			"movie/popular"
-		);
-		setMovies(data.results);
-	}
-
-	useEffect(() => {
-		loadMovies();
-	}, []);
 
 	return (
 		<div
@@ -50,7 +39,7 @@ export default function HeaderSlider({ setBg, resetBg }) {
 					},
 				}}
 			>
-				{movies.map((movie) => (
+				{data?.results?.map((movie) => (
 					<SwiperSlide>
 						<div
 							key={movie.id}
