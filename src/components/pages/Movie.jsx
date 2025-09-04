@@ -3,19 +3,38 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import toast from "react-hot-toast";
 import { fench } from "../../services/fench";
+// import ReactStars from "react-rating-stars-component";
 
 export default function Movie() {
-	const { id } = useParams();
 	const [movie, setMovie] = useState(null);
-	const { user, session } = useContext(UserContext);
+	const [isFavorite, setIsFavorite] = useState(false);
+	const { id } = useParams();
+	const { user, session, favoriteMovies, fetchFavoriteMovies } =
+		useContext(UserContext);
 
-	async function handleAddToWatchList() {
-		const result = await fench.post(`$account/${user.id}/favorite`, {
-			media_type: "movie",
-			media_id: movie.id,
-			favorite: true,
-		});
-		toast.success(`${movie.title} has been added to your favorites.`);
+	useEffect(() => {
+		if (movie && favoriteMovies.length) {
+			const favMovie = favoriteMovies.find((f) => f.id === movie?.id);
+			setIsFavorite(Boolean(favMovie));
+			console.log(favMovie);
+		}
+	}, [movie, favoriteMovies]);
+
+	async function handleFavorite() {
+		if (session) {
+			const result = await fench.post(`account/${user.id}/favorite`, {
+				media_type: "movie",
+				media_id: movie.id,
+				favorite: !isFavorite,
+			});
+			fetchFavoriteMovies();
+
+			toast.success(
+				`${movie.title} ${isFavorite ? "removed" : "added"} to your favorites.`
+			);
+		} else {
+			toast.error("Please login!");
+		}
 	}
 
 	async function loadMovie() {
@@ -36,12 +55,26 @@ export default function Movie() {
 						src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
 						alt={movie.title}
 					/>
-					<button
-						className="p-4 bg-white rounded "
-						onClick={handleAddToWatchList}
-					>
-						Add to watch List!
-					</button>
+					{isFavorite ? (
+						<button
+							className="p-4 bg-white rounded "
+							onClick={handleFavorite}
+						>
+							remove to watch List!
+						</button>
+					) : (
+						<button
+							className="p-4 bg-white rounded "
+							onClick={handleFavorite}
+						>
+							Add to watch List!
+						</button>
+					)}
+					{/* <ReactStars
+						count={5}
+						oncha
+
+					/> */}
 				</div>
 			) : (
 				<h1>loading...</h1>

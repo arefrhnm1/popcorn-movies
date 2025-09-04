@@ -11,10 +11,17 @@ export default function UserProvider({ children }) {
 	const [session, setSession] = useState(() =>
 		localStorage.getItem("session")
 	);
+	const [favoriteMovies, setFavoriteMovies] = useState([]);
 
 	async function getUserData() {
-		const { data } = await fench.get('account');
+		const { data } = await fench.get("account");
+		fetchFavoriteMovies(data.id);
 		setUser(data);
+	}
+
+	async function fetchFavoriteMovies(id = user.id) {
+		const favResult = await fench.get(`account/${id}/favorite/movies`);
+		setFavoriteMovies(favResult.data.results);
 	}
 
 	useEffect(() => {
@@ -32,10 +39,7 @@ export default function UserProvider({ children }) {
 
 	async function login(username, password) {
 		try {
-			console.log(username);
-			const tokenResult = await fench.get(
-				`authentication/token/new`
-			);
+			const tokenResult = await fench.get(`authentication/token/new`);
 
 			const authorize = await fench.post(
 				`authentication/token/validate_with_login`,
@@ -45,12 +49,9 @@ export default function UserProvider({ children }) {
 					request_token: tokenResult.data.request_token,
 				}
 			);
-			const session = await fench.post(
-				`authentication/session/new`,
-				{
-					request_token: tokenResult.data.request_token,
-				}
-			);
+			const session = await fench.post(`authentication/session/new`, {
+				request_token: tokenResult.data.request_token,
+			});
 			setSession(session.data.session_id);
 			localStorage.setItem("session", session.data.session_id);
 			window.fench.defaults.params.session_id = session.data.session_id;
@@ -61,7 +62,16 @@ export default function UserProvider({ children }) {
 	}
 
 	return (
-		<UserContext.Provider value={{ user, login, session, logout }}>
+		<UserContext.Provider
+			value={{
+				user,
+				login,
+				session,
+				logout,
+				favoriteMovies,
+				fetchFavoriteMovies,
+			}}
+		>
 			{children}
 		</UserContext.Provider>
 	);
