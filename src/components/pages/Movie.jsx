@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { fench } from "../../services/fench";
 import ReactStars from "react-rating-stars-component";
 import { useMovieDB } from "../../hooks/useMovieDB";
+import { Helmet } from "react-helmet";
+import Title from "../Title";
 
 export default function Movie() {
 	const { id } = useParams();
@@ -48,6 +50,7 @@ export default function Movie() {
 
 	return (
 		<div>
+			<Title>{movie?.title || "Loading..."}</Title>	
 			{movie ? (
 				<div>
 					<h1>{movie.title}</h1>
