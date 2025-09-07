@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./components/pages/Home";
-import Movies from "./components/pages/Movies";
 import Movie from "./components/pages/Movie";
 import Login from "./components/pages/Login";
 import UserProvider from "./context/UserContext";
 import Profile from "./components/pages/Profile";
+import Explore from "./components/pages/Explore";
+import Toprated from "./components/pages/Toprated";
 
 export const router = createBrowserRouter([
 	{
@@ -20,30 +21,21 @@ export const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: "/movies",
-				element: <Movies />,
-			},
-			{
 				path: "/movies/:id",
 				element: <Movie />,
-			},
-			{
-				path: "/tv",
-				element: <h1>this is tv page!</h1>,
-			},
-			{
-				path: "/people",
-				element: <h1>this is person page!</h1>,
-			},
-			{
-				path: "/more",
-				element: <h1>this is more page!</h1>,
 			},
 			{
 				path: "/login",
 				element: <Login />,
 			},
-			
+			{
+				path: "/explore",
+				element: <Explore />,
+			},
+			{
+				path: "/toprated",
+				element: <Toprated />,
+			},
 			{
 				path: "/profile",
 				element: <Profile />,
