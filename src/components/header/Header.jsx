@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navigation from "./Navigation";
 import SearchBox from "./searchbox/SearchBox";
 import FollowUs from "./FollowUs";
 import HeaderSlider from "./HeaderSlider";
@@ -28,7 +27,7 @@ export default function Header() {
 	};
 	return (
 		<header
-			className={`relative overflow-hidden py-6 md:py-12 px-8 ${location.pathname !== "/" ? "h-[50vh]" : ""}`}
+			className={`relative overflow-hidden py-14 md:py-12 px-8 ${location.pathname !== "/" ? "h-[50vh]" : ""}`}
 		>
 			<img
 				src={bg}
@@ -55,7 +54,6 @@ export default function Header() {
 				style={{opacity: overlayOpacity /100}}
 			></div>
 			<div className="relative z-10 flex flex-col h-full container mx-auto">
-				<Navigation />
 				<SearchBox />
 				<div className={`${location.pathname !== "/" && "hidden"}`}>
 					<FollowUs />
