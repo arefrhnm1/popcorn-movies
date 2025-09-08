@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./components/pages/Home";
-import Movie from "./components/pages/Movie";
 import Login from "./components/pages/Login";
 import UserProvider from "./context/UserContext";
 import Profile from "./components/pages/Profile";
 import Explore from "./components/pages/Explore";
 import Toprated from "./components/pages/Toprated";
+import People from "./components/pages/People";
+import MediaDetail from "./components/pages/MediaDetail";
 
 export const router = createBrowserRouter([
 	{
@@ -20,9 +21,10 @@ export const router = createBrowserRouter([
 				path: "/",
 				element: <Home />,
 			},
+			
 			{
-				path: "/movies/:id",
-				element: <Movie />,
+				path: "/media/:type/:id",
+				element: <MediaDetail />,
 			},
 			{
 				path: "/login",
@@ -39,6 +41,11 @@ export const router = createBrowserRouter([
 			{
 				path: "/profile",
 				element: <Profile />,
+			},
+			
+			{
+				path: "/people/:id",
+				element: <People />,
 			},
 		],
 	},

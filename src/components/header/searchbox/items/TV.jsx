@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function TV({ item }) {
 	return (
-		<Link to={`tv/${item.id}`}>
+		<Link to={`/media/${item.media_type}/${item.id}`}>
 			<div className="flex gap-3 items-center text-lg">
 				<img
 					className="object-cover w-11 h-11 rounded"

@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { data, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import toast from "react-hot-toast";
 import { fench } from "../../services/fench";
 import ReactStars from "react-rating-stars-component";
 import { useMovieDB } from "../../hooks/useMovieDB";
-import { Helmet } from "react-helmet";
 import Title from "../Title";
 
-export default function Movie() {
-	const { id } = useParams();
-	const [movie, loading] = useMovieDB(`movie/${id}`);
+export default function MediaDetail() {
+	const { type, id } = useParams();
+	const [movie, loading] = useMovieDB(`${type}/${id}`);
+    console.log(movie);
 
-	
 	const [isFavorite, setIsFavorite] = useState(false);
 	const { user, session, favoriteMovies, fetchFavoriteMovies } =
 		useContext(UserContext);
@@ -46,14 +45,15 @@ export default function Movie() {
 			value: rate * 2,
 		});
 		toast.success(`Your vote is submitted.`);
+        
 	}
 
 	return (
-		<div>
-			<Title>{movie?.title || "Loading..."}</Title>	
+		<div className="pt-52">
+			<Title>{movie?.title || movie?.name || "Loading..."}</Title>
 			{movie ? (
 				<div>
-					<h1>{movie.title}</h1>
+					<h1>{movie.title || movie.name}</h1>
 					<img
 						src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
 						alt={movie.title}

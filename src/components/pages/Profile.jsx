@@ -8,8 +8,8 @@ export default function Profile() {
 
 	return session ? (
 		<>
-			<div>Profile</div>
-			<h1>{user.name}</h1>
+			<div className="pt-52">Profile</div>
+			<h1>{user?.name}</h1>
 		</>
 	) : (
 		<Navigate to={'/login'} replace/>

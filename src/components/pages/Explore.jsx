@@ -1,7 +1,14 @@
 import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 export default function Explore() {
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query')
+
+
   return (
-    <div>Explore</div>
+    <div className='pt-52'>Explore
+    <span>search query: {query} </span>
+    </div>
   )
 }

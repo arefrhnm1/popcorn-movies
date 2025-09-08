@@ -7,16 +7,20 @@ export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
 	const navigate = useNavigate();
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
 	const [session, setSession] = useState(() =>
 		localStorage.getItem("session")
 	);
 	const [favoriteMovies, setFavoriteMovies] = useState([]);
 
 	async function getUserData() {
+		if (!loading) setLoading(true);
 		const { data } = await fench.get("account");
+
 		fetchFavoriteMovies(data.id);
 		setUser(data);
+		setLoading(false);
 	}
 
 	async function fetchFavoriteMovies(id = user.id) {
@@ -31,7 +35,7 @@ export default function UserProvider({ children }) {
 	}, [session]);
 
 	function logout() {
-		setUser({});
+		setUser(null);
 		setSession(null);
 		localStorage.clear();
 		delete window.fench.defaults.params.session_id;
@@ -65,6 +69,7 @@ export default function UserProvider({ children }) {
 		<UserContext.Provider
 			value={{
 				user,
+				loading,
 				login,
 				session,
 				logout,
