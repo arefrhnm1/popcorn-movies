@@ -41,27 +41,46 @@ export default function UserProvider({ children }) {
 		delete window.fench.defaults.params.session_id;
 	}
 
-	async function login(username, password) {
+	async function login({ username, password }) {
 		try {
+			// step 1
 			const tokenResult = await fench.get(`authentication/token/new`);
+			const requestToken = tokenResult.data.request_token;
 
+			// step 2
 			const authorize = await fench.post(
 				`authentication/token/validate_with_login`,
 				{
 					username,
 					password,
-					request_token: tokenResult.data.request_token,
+					request_token: requestToken,
+				},
+				{
+					headers: {
+						"Content-Type": "application/json;charset=utf-8",
+					},
 				}
 			);
-			const session = await fench.post(`authentication/session/new`, {
-				request_token: tokenResult.data.request_token,
-			});
+
+			// step 3
+			const session = await fench.post(
+				`authentication/session/new`,
+				{
+					request_token: authorize.data.request_token,
+				},
+				{
+					headers: {
+						"Content-Type": "application/json;charset=utf-8",
+					},
+				}
+			);
+
 			setSession(session.data.session_id);
 			localStorage.setItem("session", session.data.session_id);
 			window.fench.defaults.params.session_id = session.data.session_id;
 			navigate("/profile", { replace: true });
-		} catch {
-			toast.error("Invalid username and password!");
+		} catch (err) {
+			toast.error("Login error:", err.response?.data || err.message);
 		}
 	}
 

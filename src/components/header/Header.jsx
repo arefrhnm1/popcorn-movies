@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SearchBox from "./searchbox/SearchBox";
-import FollowUs from "./FollowUs";
 import HeaderSlider from "./HeaderSlider";
 import { useLocation } from "react-router-dom";
 
@@ -56,7 +55,6 @@ export default function Header() {
 			<div className="relative z-10 flex flex-col h-full container mx-auto">
 				<SearchBox />
 				<div className={`${location.pathname !== "/" && "hidden"}`}>
-					<FollowUs />
 					<HeaderSlider setBg={handleHover} resetBg={handleLeave} />
 				</div>
 			</div>

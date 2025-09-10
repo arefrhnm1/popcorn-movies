@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, } from "react-router-dom";
 
 export default function Profile() {
 	const { user, session } = useContext(UserContext);
@@ -12,6 +12,6 @@ export default function Profile() {
 			<h1>{user?.name}</h1>
 		</>
 	) : (
-		<Navigate to={'/login'} replace/>
+		<Navigate to={'/auth'} replace/>
 	)
 }

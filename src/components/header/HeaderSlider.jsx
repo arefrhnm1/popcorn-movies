@@ -51,11 +51,7 @@ export default function HeaderSlider({ setBg, resetBg }) {
 							}
 							onMouseLeave={resetBg}
 						>
-							<MovieCard
-								// title={movie.title}
-								// rate={movie.vote_average}
-								movie={movie}
-							/>
+							<MovieCard movie={movie} />
 						</div>
 					</SwiperSlide>
 				))}

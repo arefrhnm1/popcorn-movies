@@ -14,14 +14,26 @@ export default function TopBar() {
 			</Link>
 			{!user ? (
 				<div className="flex gap-4 mr-2">
-					<UserRoundPlus size={16} />
-					<LogIn size={16} />
+					<a
+						href="https://www.themoviedb.org/signup"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="bg-neutral-500/30 p-2 rounded-full hover:underline"
+					>
+						<UserRoundPlus size={20} />
+					</a>
+					<Link
+						className="bg-neutral-500/30 p-2 rounded-full"
+						to="/auth"
+					>
+						<LogIn size={20} />
+					</Link>
 				</div>
 			) : (
 				<div className="flex gap-2 items-center">
 					<button
 						onClick={logout}
-						className="flex gap-2 bg-neutral-500/30 p-2 rounded-full text-xs"
+						className="flex gap-2 bg-neutral-500/30 p-2 rounded-full"
 					>
 						<LogOut size={16} />
 					</button>

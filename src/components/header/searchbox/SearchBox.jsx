@@ -64,6 +64,7 @@ export default function SearchBox() {
 				>
 					{searchResult.map((item) => (
 						<div
+							key={item.id}
 							className="border-b-2 border-white/10 pb-2"
 							onClick={() => {
 								setSearchResult([]);

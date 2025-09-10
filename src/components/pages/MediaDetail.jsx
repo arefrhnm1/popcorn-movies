@@ -10,7 +10,6 @@ import Title from "../Title";
 export default function MediaDetail() {
 	const { type, id } = useParams();
 	const [movie, loading] = useMovieDB(`${type}/${id}`);
-    console.log(movie);
 
 	const [isFavorite, setIsFavorite] = useState(false);
 	const { user, session, favoriteMovies, fetchFavoriteMovies } =
