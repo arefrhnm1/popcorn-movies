@@ -1,8 +1,12 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, EffectCards } from "swiper/modules";
 import MovieCard from "../movies/MovieCard";
 import { useMovieDB } from "../../hooks/useMovieDB";
+
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+
 
 export default function HeaderSlider({ setBg, resetBg }) {
 	const [data] = useMovieDB(`movie/popular`);
@@ -12,32 +16,16 @@ export default function HeaderSlider({ setBg, resetBg }) {
 		<div
 			onMouseEnter={() => swiperRef.current?.autoplay.stop()}
 			onMouseLeave={() => swiperRef.current?.autoplay.start()}
+			className="p-10"
 		>
 			<Swiper
-				modules={[Autoplay]}
+			effect="cards"
+				modules={[Autoplay,EffectCards]}
+				grabCursor={true}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 				loop
 				autoplay={{ delay: 2000 }}
-				spaceBetween={10}
-				slidesPerView={1}
-				className="mt-8"
-				breakpoints={{
-					// when window width is >= 320px
-					640: {
-						slidesPerView: 2,
-						spaceBetween: 20,
-					},
-					// when window width is >= 480px
-					768: {
-						slidesPerView: 3,
-						spaceBetween: 30,
-					},
-					// when window width is >= 640px
-					1024: {
-						slidesPerView: 4,
-						spaceBetween: 40,
-					},
-				}}
+				className="mt-8 mySwiper"
 			>
 				{data?.results?.map((movie) => (
 					<SwiperSlide>

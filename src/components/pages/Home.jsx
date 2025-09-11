@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import MoviesListSlider from "../main/MoviesListSlider";
-import { Helmet } from "react-helmet";
 import Title from "../Title";
-import Header from "../header/Header";
 export default function Home() {
 	const [moviesActiveTap, setMovieActiveTab] = useState("upcoming");
 	const [tvActiveTab, setTvActiveTab] = useState("popular");
@@ -24,7 +22,6 @@ export default function Home() {
 	return (
 		<div className="container mx-auto">
 			<Title>Home</Title>
-			<Header/>
 			<div className="md:flex items-baseline gap-8">
 				<h2 className="text-yellow-300 text-3xl">Movies</h2>
 				<ul className="my-6 flex flex-col gap-2 text-yellow-100 md:flex-row md:gap-4 [&>*]:cursor-pointer [&>*]:px-4 [&>*]:py-2">
