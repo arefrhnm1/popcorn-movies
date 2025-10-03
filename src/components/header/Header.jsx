@@ -15,7 +15,7 @@ export default function Header() {
 
 	return (
 		<header
-			className={`relative py-12 w-full h-[95vh] transition-all duration-500 ${location.pathname !== "/" && "opacity-0 pointer-events-none"}`}
+			className={`relative py-12 w-full h-[95vh] transition-all duration-500 ${location.pathname !== "/" && "hidden opacity-0 pointer-events-none"}`}
 			style={{
 				backgroundImage: backdrop
 					? `url(https://image.tmdb.org/t/p/w1280${backdrop})`

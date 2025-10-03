@@ -7,7 +7,7 @@ export default function MovieCard({ movie, type = "movie" }) {
 		: "/fallback-poster.jpg";
 
 	return (
-		<Link to={`media/${type === "movie" ? "movie" : "tv"}/${movie.id}`}>
+		<Link to={`/media/${type === "movie" ? "movie" : "tv"}/${movie.id}`}>
 			<div className="relative rounded overflow-hidden aspect-[2/3] bg-gray-800">
 				<img
 					src={imageUrl}
