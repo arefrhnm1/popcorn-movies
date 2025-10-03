@@ -7,7 +7,7 @@ export default function Explore() {
 
 
   return (
-    <div className='pt-52'>Explore
+    <div className='pt-52 text-white'>Explore
     <span>search query: {query} </span>
     </div>
   )

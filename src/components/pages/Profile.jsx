@@ -8,7 +8,7 @@ export default function Profile() {
 
 	return session ? (
 		<>
-			<div className="pt-52">Profile</div>
+			<div className="pt-52 text-white">Profile</div>
 			<h1>{user?.name}</h1>
 		</>
 	) : (

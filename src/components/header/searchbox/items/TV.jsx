@@ -3,6 +3,7 @@ import { imgUrl } from "../../../../helpers/imgUrl";
 import { Link } from "react-router-dom";
 
 export default function TV({ item }) {
+	
 	return (
 		<Link to={`/media/${item.media_type}/${item.id}`}>
 			<div className="flex gap-3 items-center text-lg">
@@ -13,7 +14,6 @@ export default function TV({ item }) {
 							? imgUrl(item.poster_path, "w92")
 							: "/movie_default.jpg"
 					}
-					alt=""
 				/>
 				<p>{item.name}</p>
 			</div>

@@ -10,6 +10,7 @@ body {
 	width: 0;
 }
 
-html {
+html, body {
 	overflow-y: scroll;
+	box-sizing: border-box;
 }

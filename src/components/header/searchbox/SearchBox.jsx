@@ -29,7 +29,6 @@ export default function SearchBox() {
 	}, [query]);
 
 	function showItem(item) {
-		console.log(item);
 
 		switch (item.media_type) {
 			case "tv":

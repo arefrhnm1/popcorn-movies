@@ -22,6 +22,7 @@ export default function Header() {
 					: "none",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
+				
 			}}
 		>
 			{/* لایه تیره */}
