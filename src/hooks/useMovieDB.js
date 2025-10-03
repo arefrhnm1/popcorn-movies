@@ -12,13 +12,15 @@ export function useMovieDB(endpoint) {
 			setLoading(false);
 			setData(result.data);
 		} catch (err) {
-            toast.error(err.message === 'Network Error' ? 'Use a VPN!' : err.message)
-        }
+			toast.error(
+				err.message === "Network Error" ? "Use a VPN!" : err.message
+			);
+		}
 	}
 
 	useEffect(() => {
 		loadData();
 	}, [endpoint]);
 
-	return [data, loading];
+	return { data, loading };
 }

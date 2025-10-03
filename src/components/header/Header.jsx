@@ -2,60 +2,41 @@ import React, { useState } from "react";
 import SearchBox from "./searchbox/SearchBox";
 import HeaderSlider from "./HeaderSlider";
 import { useLocation } from "react-router-dom";
+import { useMovieDB } from "../../hooks/useMovieDB";
 
 export default function Header() {
+	const { data, loading } = useMovieDB(`movie/popular`);
+	const movies = data?.results || [];
+
+	const [activeIndex, setActiveIndex] = useState(0);
 	const location = useLocation();
-	const [bg, setBg] = useState("/backgroundImage.jpg");
-	const [hoverBg, setHoverBg] = useState(null); // تصویر هنگام هاور
-	const [blurLevel, setBlurLevel] = useState(0); // blur دینامیک
-	const [brightness, setBrightness] = useState(70); // روشنایی اولیه
-	const [overlayOpacity, setOverlayOpacity] = useState(50); // opacity overlay
 
-	const handleHover = (newBg) => {
-		setHoverBg(newBg);
-		setBlurLevel(1);
-		setBrightness(100);
-		setOverlayOpacity(60);
-	};
+	const backdrop = movies?.[activeIndex]?.backdrop_path;
 
-	const handleLeave = () => {
-		setHoverBg(null);
-		setBlurLevel(1);
-		setBrightness(70);
-		setOverlayOpacity(50);
-	};
 	return (
 		<header
-			className={`relative overflow-hidden py-14 md:py-12 px-8 ${location.pathname !== "/" ? "h-[50vh]" : ""}`}
+			className={`relative py-12 w-full h-[95vh] transition-all duration-500 ${location.pathname !== "/" && "opacity-0 pointer-events-none"}`}
+			style={{
+				backgroundImage: backdrop
+					? `url(https://image.tmdb.org/t/p/w1280${backdrop})`
+					: "none",
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+			}}
 		>
-			<img
-				src={bg}
-				alt="header background"
-				className="absolute inset-0 w-full h-full object-cover filter blur-sm transition-opacity duration-1000 ease-in-out"
-				style={{
-					filter: `blur(${blurLevel}px) brightness(${brightness}%)`,
-				}}
-			/>
-			{hoverBg && (
-				<img
-					src={hoverBg}
-					alt="hover background"
-					className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-					style={{ opacity: 1 }}
-					onTransitionEnd={() => {
-						if (!hoverBg) setBg("/backgroundImage.jpg");
-						else setBg(hoverBg);
-					}}
-				/>
-			)}
-			<div
-				className="absolute inset-0 bg-black transition-all duration-900"
-				style={{opacity: overlayOpacity /100}}
-			></div>
-			<div className="relative z-10 flex flex-col h-full container mx-auto">
+			{/* لایه تیره */}
+			<div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/0 to-black/100 z-0" />
+
+			<div className="relative z-10 flex flex-col h-full container mx-auto px-8">
 				<SearchBox />
-				<div className={`${location.pathname !== "/" && "hidden"}`}>
-					<HeaderSlider setBg={handleHover} resetBg={handleLeave} />
+				<div>
+					{
+						<HeaderSlider
+							movies={movies}
+							onSlideChange={setActiveIndex}
+							loading={loading}
+						/>
+					}
 				</div>
 			</div>
 		</header>

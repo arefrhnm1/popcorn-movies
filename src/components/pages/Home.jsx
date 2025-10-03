@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MoviesListSlider from "../main/MoviesListSlider";
 import Title from "../Title";
+import { FilmIcon } from "lucide-react";
 export default function Home() {
 	const [moviesActiveTap, setMovieActiveTab] = useState("upcoming");
 	const [tvActiveTab, setTvActiveTab] = useState("popular");
@@ -13,18 +14,18 @@ export default function Home() {
 	}
 
 	function activeClass(tab) {
-		return tab === moviesActiveTap ? "bg-yellow-800 rounded-2xl" : "";
+		return tab === moviesActiveTap ? "bg-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl" : "text-white border border-transparent";
 	}
 
 	function activeTvClassName(tab) {
 		return tab === tvActiveTab ? "bg-yellow-800 rounded-2xl" : "";
 	}
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto pt-15">
 			<Title>Home</Title>
-			<div className="md:flex items-baseline gap-8">
-				<h2 className="text-yellow-300 text-3xl">Movies</h2>
-				<ul className="my-6 flex flex-col gap-2 text-yellow-100 md:flex-row md:gap-4 [&>*]:cursor-pointer [&>*]:px-4 [&>*]:py-2">
+			<div className="flex flex-col gap-6 items-center">
+				<h2 className="text-white font-bold flex items-center gap-1 text-3xl">Movies <FilmIcon/></h2>
+				<ul className="flex gap-1 [&>*]:cursor-pointer [&>*]:px-2 [&>*]:py-1">
 					<li
 						onClick={() => handleChangeMoviesActiveTab("upcoming")}
 						className={activeClass("upcoming")}
@@ -53,7 +54,7 @@ export default function Home() {
 					</li>
 				</ul>
 			</div>
-			<MoviesListSlider type="movie" activeTab={moviesActiveTap} />
+			{/* <MoviesListSlider type="movie" activeTab={moviesActiveTap} /> */}
 			<div className="md:flex items-baseline gap-8 pt-8">
 				<h2 className="text-yellow-300 text-3xl">TV - Series</h2>
 				<ul className="my-6 flex flex-col gap-2 text-yellow-100 md:flex-row md:gap-4 [&>*]:cursor-pointer [&>*]:px-4 [&>*]:py-2">
@@ -83,7 +84,7 @@ export default function Home() {
 					</li>
 				</ul>
 			</div>
-			<MoviesListSlider type="tv" activeTab={tvActiveTab}/>
+			{/* <MoviesListSlider type="tv" activeTab={tvActiveTab}/> */}
 		</div>
 	);
 }

@@ -4,7 +4,7 @@ import MovieCard from "../movies/MovieCard";
 import { useMovieDB } from "../../hooks/useMovieDB";
 
 export default function MoviesListSlider({ type, activeTab }) {
-	const [data] = useMovieDB(`${type}/${activeTab}`);
+	const {data} = useMovieDB(`${type}/${activeTab}`);
 
 	return (
 		<Swiper
@@ -13,6 +13,8 @@ export default function MoviesListSlider({ type, activeTab }) {
 			autoplay={{ delay: 4000 }}
 			centeredSlides
 			className="mt-8"
+			slidesPerView={2}
+			spaceBetween={20}
 			breakpoints={{
 				// when window width is >= 320px
 				640: {

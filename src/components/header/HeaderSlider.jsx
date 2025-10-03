@@ -1,15 +1,12 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards } from "swiper/modules";
 import MovieCard from "../movies/MovieCard";
-import { useMovieDB } from "../../hooks/useMovieDB";
 
-import 'swiper/css';
-import 'swiper/css/effect-cards';
+import "swiper/css";
+import "swiper/css/effect-cards";
 
-
-export default function HeaderSlider({ setBg, resetBg }) {
-	const [data] = useMovieDB(`movie/popular`);
+export default function HeaderSlider({ movies, onSlideChange }) {
 	const swiperRef = useRef(null);
 
 	return (
@@ -19,28 +16,18 @@ export default function HeaderSlider({ setBg, resetBg }) {
 			className="p-10"
 		>
 			<Swiper
-			effect="cards"
-				modules={[Autoplay,EffectCards]}
-				grabCursor={true}
-				onSwiper={(swiper) => (swiperRef.current = swiper)}
+				effect="cards"
+				modules={[Autoplay, EffectCards]}
+				grabCursor
 				loop
-				autoplay={{ delay: 2000 }}
-				className="mt-8 mySwiper"
+				onSwiper={(swiper) => (swiperRef.current = swiper)}
+				autoplay={{ delay: 4000 }}
+				onSlideChange={(swiper) => onSlideChange(swiper.realIndex)}
+				className="mt-2 mySwiper"
 			>
-				{data?.results?.map((movie) => (
-					<SwiperSlide>
-						<div
-							key={movie.id}
-							className="cursor-pointer relative"
-							onMouseEnter={() =>
-								setBg(
-									`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-								)
-							}
-							onMouseLeave={resetBg}
-						>
-							<MovieCard movie={movie} />
-						</div>
+				{movies.map((movie) => (
+					<SwiperSlide key={movie.id}>
+						<MovieCard movie={movie} />
 					</SwiperSlide>
 				))}
 			</Swiper>
