@@ -4,10 +4,12 @@ import { Toaster } from "react-hot-toast";
 import Nav from "./components/Nav";
 import TopBar from "./components/TopBar";
 import Header from "./components/header/Header";
+import ScrollToTop from "./components/ScrollToTop";
 
 export function App() {
 	return (
 		<>
+			<ScrollToTop/>
 			<TopBar />
 			<Header />
 			<main className="bg-black">
