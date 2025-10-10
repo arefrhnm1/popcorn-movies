@@ -100,8 +100,6 @@ Aref Rahnama
 - Frontend Developer — exploring UI, architecture, and API-driven apps.
 - 📍 Continuously improving Popcorn Movie as a live project.
 
-🔗 GitHub
- | Live Demo
 
  ---
 
