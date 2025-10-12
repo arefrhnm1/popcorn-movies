@@ -22,16 +22,16 @@ export default function ExploreFilters({ tab, filters, setFilters, setPage }) {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 items-center mb-6">
+    <div className="flex gap-4 items-center overflow-x-auto scrollbar-hide [&>*]:cursor-pointer [&>*]:px-2 [&>*]:py-1">
       {/* Genre */}
       <select
-        className="bg-gray-800 px-3 py-2 rounded"
+        className="g-zinc-800/60 backdrop-blur-xs border border-white/30 outline-none text-white rounded-xl"
         value={filters.genre}
         onChange={(e) => handleChange("genre", e.target.value)}
       >
-        <option value="">All Genres</option>
+        <option style={{ backgroundColor: "#18181b", color: "white" }} value="">All Genres</option>
         {genres.map((g) => (
-          <option key={g.id} value={g.id}>
+          <option style={{ backgroundColor: "#18181b", color: "white" }} key={g.id} value={g.id}>
             {g.name}
           </option>
         ))}
@@ -41,7 +41,7 @@ export default function ExploreFilters({ tab, filters, setFilters, setPage }) {
       <input
         type="number"
         placeholder="Year"
-        className="bg-gray-800 px-3 py-2 rounded w-24"
+        className="g-zinc-800/60 backdrop-blur-xs border border-white/30 outline-none text-white rounded-xl w-24"
         value={filters.year}
         onChange={(e) => handleChange("year", e.target.value)}
       />
@@ -50,7 +50,7 @@ export default function ExploreFilters({ tab, filters, setFilters, setPage }) {
       <input
         type="number"
         placeholder="Min Vote"
-        className="bg-gray-800 px-3 py-2 rounded w-24"
+        className="g-zinc-800/60 backdrop-blur-xs border border-white/30 outline-none text-white rounded-xl w-24"
         value={filters.minVote}
         onChange={(e) => handleChange("minVote", e.target.value)}
       />
@@ -59,7 +59,7 @@ export default function ExploreFilters({ tab, filters, setFilters, setPage }) {
       <input
         type="text"
         placeholder="Lang (e.g. en, fr, fa)"
-        className="bg-gray-800 px-3 py-2 rounded w-24"
+        className="g-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl outline-none w-24"
         value={filters.language}
         onChange={(e) => handleChange("language", e.target.value)}
       />

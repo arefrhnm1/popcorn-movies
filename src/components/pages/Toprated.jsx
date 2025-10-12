@@ -13,23 +13,23 @@ export default function TopRated() {
 	return (
 		<div className="container mx-auto px-6 py-8 pt-35">
 			{/* دکمه‌های بالای صفحه */}
-			<div className="flex gap-4 mb-6 justify-center">
+			<div className="flex mb-10 justify-center gap-5 [&>*]:cursor-pointer [&>*]:px-2 [&>*]:py-1">
 				<button
 					onClick={() => setActiveTab("movie")}
-					className={`px-4 py-2 rounded font-semibold transition ${
+					className={`${
 						activeTab === "movie"
-							? "bg-yellow-400 text-black"
-							: "bg-zinc-800 text-white hover:bg-zinc-700"
+							? "bg-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl"
+							: "text-white border border-transparent"
 					}`}
 				>
 					Movies
 				</button>
 				<button
 					onClick={() => setActiveTab("tv")}
-					className={`px-4 py-2 rounded font-semibold transition ${
+					className={`${
 						activeTab === "tv"
-							? "bg-yellow-400 text-black"
-							: "bg-zinc-800 text-white hover:bg-zinc-700"
+							? "bg-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl"
+							: "text-white border border-transparent"
 					}`}
 				>
 					TV Shows

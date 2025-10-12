@@ -62,16 +62,18 @@ export default function Explore() {
 			<div className="absolute -mb-1 inset-0 bg-gradient-to-t from-black/100 via-black/0 to-black/70" />
 			<div className="relative z-10">
 				<SearchBox />
-				{/* Tabs */}
-				<ExploreTabs tab={tab} setTab={setTab} setPage={setPage} />
+				<div className="flex flex-col mt-10 gap-5 w-full">
+					{/* Tabs */}
+					<ExploreTabs tab={tab} setTab={setTab} setPage={setPage} />
 
-				{/* Filters */}
-				<ExploreFilters
-					tab={tab}
-					filters={filters}
-					setFilters={setFilters}
-					setPage={setPage}
-				/>
+					{/* Filters */}
+					<ExploreFilters
+						tab={tab}
+						filters={filters}
+						setFilters={setFilters}
+						setPage={setPage}
+					/>
+				</div>
 
 				{/* Results */}
 				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-6">

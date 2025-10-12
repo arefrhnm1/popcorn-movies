@@ -7,18 +7,18 @@ export default function ExploreTabs({ tab, setTab, setPage }) {
   };
 
   return (
-    <div className="flex gap-4 mb-6 mt-10">
+    <div className="flex justify-center gap-6 [&>*]:cursor-pointer [&>*]:px-2 [&>*]:py-1">
       <button
-        className={`px-4 py-2 rounded font-semibold ${
-          tab === "movie" ? "bg-yellow-500 text-black" : "bg-gray-800"
+        className={` ${
+          tab === "movie" ? "g-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl" : "text-white border border-transparent"
         }`}
         onClick={() => handleClick("movie")}
       >
         Movies
       </button>
       <button
-        className={`px-4 py-2 rounded font-semibold ${
-          tab === "tv" ? "bg-yellow-500 text-black" : "bg-gray-800"
+        className={` ${
+          tab === "tv" ? "g-zinc-800/60 backdrop-blur-xs border border-white/30 text-white rounded-xl" : "text-white border border-transparent"
         }`}
         onClick={() => handleClick("tv")}
       >
