@@ -9,6 +9,7 @@ import {
 	submitRating,
 } from "../../services/account";
 import VideosSection from "./VideosSection";
+import { BookmarkMinus, BookmarkPlus, HeartMinus, HeartPlus } from "lucide-react";
 
 export default function MediaActions({ data, type }) {
 	const { user, session, fetchFavoriteMovies } = useContext(UserContext);
@@ -107,42 +108,8 @@ export default function MediaActions({ data, type }) {
 	);
 
 	return (
-		<div className="flex flex-wrap gap-3 items-center">
-			<button
-				onClick={onToggleFavorite}
-				className={`px-3 py-2 rounded ${accountState?.favorite ? "bg-yellow-400 text-black" : "bg-zinc-800 text-white"}`}
-			>
-				{accountState?.favorite ? "Favorited" : "Add to Favorites"}
-			</button>
-
-			<button
-				onClick={onToggleWatchlist}
-				className={`px-3 py-2 rounded ${accountState?.watchlist ? "bg-yellow-400 text-black" : "bg-zinc-800 text-white"}`}
-			>
-				{accountState?.watchlist ? "In Watchlist" : "Add to Watchlist"}
-			</button>
-
-			<div className="flex items-center gap-2">
-				<label className="text-sm text-gray-300">Rate:</label>
-				<select
-					value={ratingValue ?? ""}
-					onChange={(e) => onRate(Number(e.target.value))}
-					className="bg-zinc-800 px-2 py-1 rounded"
-				>
-					<option value="">—</option>
-					<option value={0.5}>0.5</option>
-					<option value={1}>1</option>
-					<option value={1.5}>1.5</option>
-					<option value={2}>2</option>
-					<option value={2.5}>2.5</option>
-					<option value={3}>3</option>
-					<option value={3.5}>3.5</option>
-					<option value={4}>4</option>
-					<option value={4.5}>4.5</option>
-					<option value={5}>5</option>
-				</select>
-			</div>
-
+		
+		<div className="flex gap-3 items-center">
 			{trailer && (
 				<>
 					<button
@@ -159,6 +126,43 @@ export default function MediaActions({ data, type }) {
 					)}
 				</>
 			)}
+			<button
+				onClick={onToggleFavorite}
+				className={`px-3 py-2 rounded ${accountState?.favorite ? "bg-yellow-400 text-black" : "bg-zinc-800/60 text-white"}`}
+			>
+				{accountState?.favorite ? <HeartMinus/> : <HeartPlus/>}
+			</button>
+
+			<button
+				onClick={onToggleWatchlist}
+				className={`px-3 py-2 rounded ${accountState?.watchlist ? "bg-yellow-400 text-black" : "bg-zinc-800/60 text-white"}`}
+			>
+				{accountState?.watchlist ? <BookmarkMinus/> : <BookmarkPlus/>}
+			</button>
+			
+
+			<div className="flex items-center gap-2 bg-zinc-800/60 px-2 py-1 rounded">
+				<label className="text-sm text-white">Rate:</label>
+				<select
+					value={ratingValue ?? ""}
+					onChange={(e) => onRate(Number(e.target.value))}
+					className="bg-zinc-800/60 px-2 py-1 rounded outline-none"
+				>
+					<option value="">—</option>
+					<option value={0.5}>0.5</option>
+					<option value={1}>1</option>
+					<option value={1.5}>1.5</option>
+					<option value={2}>2</option>
+					<option value={2.5}>2.5</option>
+					<option value={3}>3</option>
+					<option value={3.5}>3.5</option>
+					<option value={4}>4</option>
+					<option value={4.5}>4.5</option>
+					<option value={5}>5</option>
+				</select>
+			</div>
+
+			
 		</div>
 	);
 }

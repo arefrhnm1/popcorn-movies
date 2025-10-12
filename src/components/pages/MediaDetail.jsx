@@ -42,9 +42,9 @@ export default function MediaDetail() {
     <div className="text-white">
       <MediaHero data={data} type={type} />
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {/* Left/Main column */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6">
             <section>
               <h3 className="text-xl font-semibold mb-3">Overview</h3>
               <p className="text-gray-300">{data.overview}</p>
