@@ -8,6 +8,17 @@ This project serves as an **MVP** (Minimum Viable Product) and a **showcase of m
 ## 🚀 Live Demo
 🔗 [popcorn-movies-kappa.vercel.app](https://popcorn-movies-kappa.vercel.app/)
 
+<h3 align="center">📱 Movie App Screenshots</h3>
+
+<br/>
+
+<p align="center">
+  <img src="src/assets/screen6.png" width="200" hspace="10"/>
+  <img src="src/assets/screen5.png" width="200" hspace="10"/>
+  <img src="src/assets/screen4.png" width="200" hspace="10"/>
+  <img src="src/assets/screen3.png" width="200" hspace="10"/>
+</p>
+
 ---
 
 ## 🧠 About the Project
