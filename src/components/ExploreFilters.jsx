@@ -35,7 +35,7 @@ export default function ExploreFilters({ tab, filters, setFilters, setPage }) {
             {g.name}
           </option>
         ))}
-      </select>
+      </select>نص
 
       {/* Year */}
       <input
