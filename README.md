@@ -13,10 +13,10 @@ This project serves as an **MVP** (Minimum Viable Product) and a **showcase of m
 <br/>
 
 <p align="center">
-  <img src="src/assets/screen6.png" width="200" hspace="10"/>
-  <img src="src/assets/screen5.png" width="200" hspace="10"/>
-  <img src="src/assets/screen4.png" width="200" hspace="10"/>
-  <img src="src/assets/screen3.png" width="200" hspace="10"/>
+  <img src="src/assets/screen6.png" width="180" hspace="10"/>
+  <img src="src/assets/screen5.png" width="180" hspace="10"/>
+  <img src="src/assets/screen4.png" width="180" hspace="10"/>
+  <img src="src/assets/screen3.png" width="180" hspace="10"/>
 </p>
 
 ---
